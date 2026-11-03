@@ -55,3 +55,4 @@ Instructions will be added after implementation.
 - `GET /overdue` — Active reservations
 - `GET /ready` — Fully paid reservations
 - `DELETE /reservations/{id}` — Cancel a reservation
+- - `GET /schedule/{id}` — Show the payment plan, next due date, and instalment amount for a reservation (demonstrates polymorphism: weekly vs monthly)
