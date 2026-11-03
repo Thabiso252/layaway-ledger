@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layaway Ledger</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- LOGIN SCREEN -->
     <div id="loginScreen" class="login-screen">
         <h2>Layaway Ledger — Sign in</h2>
-        <p style="color: #4a5568; font-size: 0.9rem;">Manager access only</p>
         <form id="loginForm">
             <input type="text" id="loginUser" placeholder="Username" required>
             <input type="password" id="loginPass" placeholder="Password" required>
@@ -18,16 +15,12 @@
         </form>
         <p id="loginMsg"></p>
     </div>
-
-    <!-- MAIN APP (hidden by default) -->
     <main id="appMain" class="hidden">
         <header>
             <h1>Layaway Ledger</h1>
-            <p class="tagline">Ndola branch — record reservations, payments, and collections</p>
+            <p class="tagline">Ndola branch</p>
             <button onclick="refreshAll()" style="margin-top: 12px;">Refresh All Data</button>
         </header>
-
-        <!-- Section: Add Customer -->
         <section>
             <h2>Add Customer</h2>
             <form id="customerForm">
@@ -37,8 +30,6 @@
             </form>
             <p id="customerMsg"></p>
         </section>
-
-        <!-- Section: Add Item -->
         <section>
             <h2>Add Item</h2>
             <form id="itemForm">
@@ -48,13 +39,11 @@
             </form>
             <p id="itemMsg"></p>
         </section>
-
-        <!-- Section: Create Reservation -->
         <section>
             <h2>Create Reservation</h2>
             <form id="reservationForm">
-                <input type="number" id="resCustomerId" placeholder="Customer ID" required>
-                <input type="number" id="resItemId" placeholder="Item ID" required>
+                <input type="text" id="resCustomerId" placeholder="Customer ID" required>
+                <input type="text" id="resItemId" placeholder="Item ID" required>
                 <select id="resPlan" required>
                     <option value="">-- Payment Plan --</option>
                     <option value="weekly">Weekly</option>
@@ -64,52 +53,28 @@
             </form>
             <p id="resMsg"></p>
         </section>
-
-        <!-- Section: Record Payment -->
         <section>
             <h2>Record Payment</h2>
             <form id="paymentForm">
-                <input type="number" id="payReservationId" placeholder="Reservation ID" required>
+                <input type="text" id="payReservationId" placeholder="Reservation ID" required>
                 <input type="number" id="payAmount" placeholder="Amount (K)" step="0.01" required>
                 <button type="submit">Record Payment</button>
             </form>
             <p id="payMsg"></p>
         </section>
-
-        <!-- Section: Overdue Reservations -->
         <section>
             <h2>Overdue Reservations</h2>
-            <table id="overdueTable">
-                <thead>
-                    <tr><th>ID</th><th>Customer</th><th>Item</th><th>Balance</th><th>Due</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <table id="overdueTable"><thead><tr><th>ID</th><th>Customer</th><th>Item</th><th>Balance</th><th>Status</th></tr></thead><tbody></tbody></table>
         </section>
-
-        <!-- Section: Ready for Collection -->
         <section>
             <h2>Ready for Collection</h2>
-            <table id="readyTable">
-                <thead>
-                    <tr><th>ID</th><th>Customer</th><th>Item</th><th>Status</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <table id="readyTable"><thead><tr><th>ID</th><th>Customer</th><th>Item</th><th>Status</th></tr></thead><tbody></tbody></table>
         </section>
-
-        <!-- Section: All Reservations -->
         <section>
             <h2>All Reservations</h2>
-            <table id="allTable">
-                <thead>
-                    <tr><th>ID</th><th>Customer</th><th>Item</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <table id="allTable"><thead><tr><th>ID</th><th>Customer</th><th>Item</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead><tbody></tbody></table>
         </section>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>

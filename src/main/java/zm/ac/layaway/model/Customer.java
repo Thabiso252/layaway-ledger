@@ -1,41 +1,19 @@
 package zm.ac.layaway.model;
 
-import java.util.UUID;
-
 public class Customer {
-
     private final String customerId;
     private final String name;
-    private final String phoneNumber;
+    private final String phone;
 
-    public Customer(String name, String phoneNumber) {
-
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException(
-                    "Customer name cannot be empty."
-            );
-        }
-
-        if (phoneNumber == null || phoneNumber.isBlank()) {
-            throw new IllegalArgumentException(
-                    "Customer phone number cannot be empty."
-            );
-        }
-
-        this.customerId = UUID.randomUUID().toString();
+    public Customer(String customerId, String name, String phone) {
+        if (name == null || name.isBlank()) throw new IllegalArgumentException("Name cannot be empty.");
+        if (phone == null || phone.isBlank()) throw new IllegalArgumentException("Phone cannot be empty.");
+        this.customerId = customerId;
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+    public String getCustomerId() { return customerId; }
+    public String getName() { return name; }
+    public String getPhone() { return phone; }
 }
