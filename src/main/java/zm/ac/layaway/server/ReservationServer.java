@@ -82,6 +82,26 @@ public class ReservationServer {
                 .collect(Collectors.toList());
             ctx.json(ready);
         });
+        app.get("/schedule/{id}", ctx -> {
+            try {
+                String id = ctx.pathParam("id").trim();
+                Reservation res = reservations.stream()
+                    .filter(x -> x.getReservationId().equals(id))
+                    .findFirst()
+                    .orElseThrow(() -> new ReservationException("Reservation not found"));
+                
+                ctx.json(Map.of(
+                    "reservationId", id,
+                    "planType", res.getPaymentPlan().getClass().getSimpleName(),
+                    "nextDueDate", res.getNextDueDate().toString(),
+                    "instalmentAmount", res.getInstalmentAmount(4),
+                    "totalPrice", res.getTotalPrice()
+                ));
+            } catch (Exception e) {
+                ctx.status(400).json(Map.of("error", e.getMessage()));
+            }
+        });
+
 
         app.get("/reservations", ctx -> ctx.json(reservations));
         

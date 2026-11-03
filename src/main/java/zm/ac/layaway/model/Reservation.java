@@ -59,4 +59,11 @@ public abstract class Reservation {
         if (status != ReservationStatus.ACTIVE) throw new IllegalStateException("Only active reservations can be cancelled.");
         status = ReservationStatus.CANCELLED;
     }
+    public java.time.LocalDate getNextDueDate() {
+        return paymentPlan.nextDueDate(java.time.LocalDate.now());
+    }
+
+    public double getInstalmentAmount(int count) {
+        return paymentPlan.calculateInstalment(getTotalPrice().doubleValue(), count);
+    }
 }
