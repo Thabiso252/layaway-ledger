@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Layaway Ledger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-screen">
+        <h2>Layaway Ledger — Sign in</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUser" placeholder="Username" required>
+            <input type="password" id="loginPass" placeholder="Password" required>
+            <button type="submit">Sign in</button>
+        </form>
+        <p id="loginMsg"></p>
+    </div>
+    <main id="appMain" class="hidden">
+        <header>
+            <h1>Layaway Ledger</h1>
+            <p class="tagline">Ndola branch</p>
+            <button onclick="refreshAll()" style="margin-top: 12px;">Refresh All Data</button>
+        </header>
+        <section>
+            <h2>Add Customer</h2>
+            <form id="customerForm">
+                <input type="text" id="customerName" placeholder="Name" required>
+                <input type="text" id="customerPhone" placeholder="Phone" required>
+                <button type="submit">Add Customer</button>
+            </form>
+            <p id="customerMsg"></p>
+        </section>
+        <section>
+            <h2>Add Item</h2>
+            <form id="itemForm">
+                <input type="text" id="itemDescription" placeholder="Description" required>
+                <input type="number" id="itemPrice" placeholder="Price (K)" step="0.01" required>
+                <button type="submit">Add Item</button>
+            </form>
+            <p id="itemMsg"></p>
+        </section>
+        <section>
+            <h2>Create Reservation</h2>
+            <form id="reservationForm">
+                <input type="text" id="resCustomerId" placeholder="Customer ID" required>
+                <input type="text" id="resItemId" placeholder="Item ID" required>
+                <select id="resPlan" required>
+                    <option value="">-- Payment Plan --</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <button type="submit">Create Reservation</button>
+            </form>
+            <p id="resMsg"></p>
+        </section>
+        <section>
+            <h2>Record Payment</h2>
+            <form id="paymentForm">
+                <input type="text" id="payReservationId" placeholder="Reservation ID" required>
+                <input type="number" id="payAmount" placeholder="Amount (K)" step="0.01" required>
+                <button type="submit">Record Payment</button>
+            </form>
+            <p id="payMsg"></p>
+        </section>
+        <section>
+            <h2>Overdue Reservations</h2>
+            <table id="overdueTable"><thead><tr><th>ID</th><th>Customer</th><th>Item</th><th>Balance</th><th>Status</th></tr></thead><tbody></tbody></table>
+        </section>
+        <section>
+            <h2>Ready for Collection</h2>
+            <table id="readyTable"><thead><tr><th>ID</th><th>Customer</th><th>Item</th><th>Status</th></tr></thead><tbody></tbody></table>
+        </section>
+        <section>
+            <h2>All Reservations</h2>
+            <table id="allTable"><thead><tr><th>ID</th><th>Customer</th><th>Item</th><th>Total</th><th>Paid</th><th>Balance</th><th>Status</th></tr></thead><tbody></tbody></table>
+        </section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
