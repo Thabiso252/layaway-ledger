@@ -37,7 +37,7 @@ document.getElementById("customerForm").addEventListener("submit", async (e) => 
     const msg = document.getElementById("customerMsg");
     msg.textContent = ok ? `Customer added: ID ${body.id} (Auto-fills below)` : `Error: ${body.error}`;
     msg.style.color = ok ? "green" : "red";
-    if (ok) { document.getElementById("resCustomerId").value = body.id; e.target.reset(); }
+    if (ok) { document.getElementById("resCustomerId").value = body.id; e.target.reset(); refreshAll(); }
 });
 
 document.getElementById("itemForm").addEventListener("submit", async (e) => {
@@ -46,7 +46,7 @@ document.getElementById("itemForm").addEventListener("submit", async (e) => {
     const msg = document.getElementById("itemMsg");
     msg.textContent = ok ? `Item added: ID ${body.id} (Auto-fills below)` : `Error: ${body.error}`;
     msg.style.color = ok ? "green" : "red";
-    if (ok) { document.getElementById("resItemId").value = body.id; e.target.reset(); }
+    if (ok) { document.getElementById("resItemId").value = body.id; e.target.reset(); refreshAll(); }
 });
 
 document.getElementById("reservationForm").addEventListener("submit", async (e) => {
@@ -59,7 +59,7 @@ document.getElementById("reservationForm").addEventListener("submit", async (e) 
     const msg = document.getElementById("resMsg");
     msg.textContent = ok ? `Reservation created: ID ${body.id}` : `Error: ${body.error}`;
     msg.style.color = ok ? "green" : "red";
-    if (ok) { document.getElementById("payReservationId").value = body.id; e.target.reset(); }
+    if (ok) { document.getElementById("payReservationId").value = body.id; e.target.reset(); refreshAll(); }
 });
 
 document.getElementById("paymentForm").addEventListener("submit", async (e) => {
@@ -71,13 +71,12 @@ document.getElementById("paymentForm").addEventListener("submit", async (e) => {
     const msg = document.getElementById("payMsg");
     msg.textContent = ok ? `Payment recorded.` : `Error: ${body.error}`;
     msg.style.color = ok ? "green" : "red";
-    if (ok) { e.target.reset(); }
+    if (ok) { e.target.reset(); refreshAll(); }
 });
 
 async function loadOverdue() {
     console.log("loadOverdue() called");
     const { ok, body } = await getJSON(`${API}/overdue`);
-    console.log("Overdue response:", ok, body);
     const tbody = document.querySelector("#overdueTable tbody");
     tbody.innerHTML = (!ok || body.length === 0) ? `<tr><td colspan="5" style="color:#888;text-align:center;">No overdue reservations</td></tr>` : "";
     if (ok && Array.isArray(body)) body.forEach(r => {
@@ -88,7 +87,6 @@ async function loadOverdue() {
 async function loadReady() {
     console.log("loadReady() called");
     const { ok, body } = await getJSON(`${API}/ready`);
-    console.log("Ready response:", ok, body);
     const tbody = document.querySelector("#readyTable tbody");
     tbody.innerHTML = (!ok || body.length === 0) ? `<tr><td colspan="4" style="color:#888;text-align:center;">No items ready</td></tr>` : "";
     if (ok && Array.isArray(body)) body.forEach(r => {
@@ -99,7 +97,6 @@ async function loadReady() {
 async function loadAllReservations() {
     console.log("loadAllReservations() called");
     const { ok, body } = await getJSON(`${API}/reservations`);
-    console.log("All reservations response:", ok, body);
     const tbody = document.querySelector("#allTable tbody");
     tbody.innerHTML = (!ok || body.length === 0) ? `<tr><td colspan="7" style="color:#888;text-align:center;">No reservations found</td></tr>` : "";
     if (ok && Array.isArray(body)) body.forEach(r => {
