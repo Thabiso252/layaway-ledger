@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>zm.ac</groupId>
+    <artifactId>layaway-ledger</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+<<<<<<< HEAD
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+=======
+        <maven.compiler.release>21</maven.compiler.release>
+>>>>>>> origin/main
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javalin.version>6.7.0</javalin.version>
+        <junit.version>5.13.4</junit.version>
+    </properties>
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -19,28 +47,21 @@
     </properties>
 
     <dependencies>
-        <!-- REST API framework -->
         <dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin</artifactId>
             <version>${javalin.version}</version>
         </dependency>
-
-        <!-- JSON parsing for Javalin -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.17.2</version>
         </dependency>
-
-        <!-- Logging (required by Javalin) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>2.0.13</version>
         </dependency>
-
-        <!-- Testing framework -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -60,14 +81,11 @@
                     <target>17</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.3</version>
             </plugin>
-            
-            <!-- Allows you to run the server with: mvn exec:java -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
