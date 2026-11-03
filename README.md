@@ -40,3 +40,18 @@ Thabiso Moyo       2410190
 ## Running the Application
 
 Instructions will be added after implementation.
+## Running the Application
+1. `mvn clean compile`
+2. `mvn exec:java`
+3. Open `http://localhost:7000`
+4. Login: `admin` / `admin123`
+
+## API Endpoints
+- `POST /customers` — Register a customer
+- `POST /items` — Add an item
+- `POST /reservations` — Create a layaway reservation
+- `POST /payments` — Record a payment
+- `GET /reservations` — List all
+- `GET /overdue` — Active reservations
+- `GET /ready` — Fully paid reservations
+- `DELETE /reservations/{id}` — Cancel a reservation
