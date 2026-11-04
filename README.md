@@ -32,7 +32,7 @@ domain models, business logic, REST API and frontend.
 
 ## Team
 
-Davis Manchishi    2410093
+Davies Manchishi    2410093
 Loveness Lyaunga   2410060
 Prince Zulu        2410237
 Thabiso Moyo       2410190
