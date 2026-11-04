@@ -34,3 +34,65 @@ The system allows shopkeepers to:
 ## Project Structure
 
 The project uses a layered structure separating domain models, business logic, the REST API, and the frontend.
+src/main/java/zm/ac/layaway/
+model/ Customer, Item, Reservation, LayawayReservation,
+DepositReservation, Payment, PaymentPlan,
+WeeklyInstalment, MonthlyInstalment,
+ItemStatus, ReservationStatus
+exception/ ReservationException
+server/ ReservationServer (Javalin)
+src/main/resources/public/
+index.html, app.js, styles.css
+
+
+## OOP Concepts Demonstrated
+
+- **Inheritance:** `Reservation` (abstract) → `LayawayReservation` and `DepositReservation`
+- **Interface:** `PaymentPlan` implemented by `WeeklyInstalment` and `MonthlyInstalment`
+- **Polymorphism:** `Reservation` holds a `PaymentPlan` and calls `nextDueDate()` without knowing the concrete type — weekly returns +7 days, monthly returns +30 days (demonstrated live via `GET /schedule/{id}`)
+- **Encapsulation:** private fields with getters/setters and validation
+- **Custom exception:** `ReservationException`, thrown on invalid operations and returned as HTTP 400
+- **Collections:** `ArrayList` of customers, items, and reservations
+
+## Team
+
+| Full Name | Student ID |
+|---|---|
+| Davies Manchishi | 2410093 |
+| Loveness Lyaunga | 2410060 |
+| Prince Zulu | 2410237 |
+| Thabiso Moyo | 2410190 |
+
+## Running the Application
+
+1. `mvn clean compile`
+2. `mvn exec:java`
+3. Open `http://localhost:7000`
+4. Login: `admin` / `admin123`
+
+## API Endpoints
+
+- `POST /customers` — Register a customer
+- `POST /items` — Add an item
+- `POST /reservations` — Create a layaway reservation
+- `POST /payments` — Record a payment
+- `GET /reservations` — List all reservations
+- `GET /overdue` — List active (unpaid) reservations
+- `GET /ready` — List fully paid reservations ready for collection
+- `GET /schedule/{id}` — Show payment plan, next due date, and instalment amount (demonstrates polymorphism: weekly vs monthly)
+- `DELETE /reservations/{id}` — Cancel a reservation
+
+## Demo Access Gate
+
+The front end includes a simple sign-in screen for demonstration:
+- Username: `admin`
+- Password: `admin123`
+
+Full authentication (password hashing, sessions, role-based access) was listed as out of scope in the approved proposal.
+
+## Future Work
+
+- File-based persistence (data currently stored in memory; survives until the server restarts)
+- User accounts and role-based access
+- SMS reminders for upcoming due dates
+- Stock/inventory management
