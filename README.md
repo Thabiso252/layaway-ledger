@@ -34,15 +34,13 @@ The system allows shopkeepers to:
 ## Project Structure
 
 The project uses a layered structure separating domain models, business logic, the REST API, and the frontend.
-src/main/java/zm/ac/layaway/
-model/ Customer, Item, Reservation, LayawayReservation,
-DepositReservation, Payment, PaymentPlan,
-WeeklyInstalment, MonthlyInstalment,
-ItemStatus, ReservationStatus
-exception/ ReservationException
-server/ ReservationServer (Javalin)
-src/main/resources/public/
-index.html, app.js, styles.css
+
+| Path | Contents |
+|---|---|
+| `src/main/java/zm/ac/layaway/model/` | Customer, Item, Reservation, LayawayReservation, DepositReservation, Payment, PaymentPlan, WeeklyInstalment, MonthlyInstalment, ItemStatus, ReservationStatus |
+| `src/main/java/zm/ac/layaway/exception/` | ReservationException |
+| `src/main/java/zm/ac/layaway/server/` | ReservationServer (Javalin) |
+| `src/main/resources/public/` | index.html, app.js, styles.css |
 
 
 ## OOP Concepts Demonstrated
@@ -87,12 +85,5 @@ index.html, app.js, styles.css
 The front end includes a simple sign-in screen for demonstration:
 - Username: `admin`
 - Password: `admin123`
+This is a front-end-only demo gate for presentation purposes. Full authentication (password hashing, sessions, role-based access) was listed as out of scope in the approved proposal and would be the first feature added in a production version.
 
-Full authentication (password hashing, sessions, role-based access) was listed as out of scope in the approved proposal.
-
-## Future Work
-
-- File-based persistence (data currently stored in memory; survives until the server restarts)
-- User accounts and role-based access
-- SMS reminders for upcoming due dates
-- Stock/inventory management
